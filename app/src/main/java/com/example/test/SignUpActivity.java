@@ -2,6 +2,7 @@ package com.example.test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -27,12 +28,10 @@ public class SignUpActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         //hide action bar
-        getSupportActionBar().hide();
+        if(getSupportActionBar() != null)
+            getSupportActionBar().hide();
 
-        binding.ButtonSignUp.setOnClickListener(v -> {
-            Log.d(TAG, "Button Clicked!");
-            signUp();//custom function
-        });
+        binding.ButtonSignUp.setOnClickListener(v -> signUp());
     }
 
     @Override
@@ -54,7 +53,10 @@ public class SignUpActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "createUserWithEmail:success");
-                                FirebaseUser user = mAuth.getCurrentUser();
+                                Intent intent = new Intent();
+                                intent.putExtra("email", binding.EditTextEmail.getText().toString());
+                                intent.putExtra("password", binding.EditTextPassword.getText().toString());
+                                setResult(RESULT_OK, intent);
                                 finish();//UI when succeed
                             } else {
                                 // If sign in fails, display a message to the user.

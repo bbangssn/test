@@ -5,21 +5,25 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.test.databinding.ActivityLogInBinding;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class LogInActivity extends AppCompatActivity {
     final String TAG = "LogInActivity";
 
     FirebaseAuth mAuth;//firebase Authentication helper
     ActivityLogInBinding binding;//view binding
+
+    ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+        if(result.getResultCode() == RESULT_OK && result.getData() != null){
+            binding.EditTextEmail.setText(result.getData().getStringExtra("email"));
+            binding.EditTextPassword.setText(result.getData().getStringExtra("password"));
+        }
+    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +35,11 @@ public class LogInActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         //hide action bar
-        getSupportActionBar().hide();
+        if(getSupportActionBar() != null)
+            getSupportActionBar().hide();
 
         //move to SignUp Activity
-        binding.ButtonSignUp.setOnClickListener(v -> {
-            ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-                binding.EditTextEmail.setText(result.getData().getStringExtra("email"));
-                binding.EditTextPassword.setText(result.getData().getStringExtra("password"));
-            });
-        });
+        binding.ButtonSignUp.setOnClickListener(v -> signUp());
         binding.ButtonLogIn.setOnClickListener(v -> logIn());
     }
 
@@ -53,8 +53,10 @@ public class LogInActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithEmail:success");
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        startActivity(new Intent(this, MainActivity.class));
+
+                        Intent intent = new Intent(this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//존재하는 엑티비티가 있다면 그것을 사용하고 그 위에 쌓인 엑티비티 삭제
+                        startActivity(intent);
                         finish();
                         //UI when succeed
                     } else {
@@ -69,7 +71,8 @@ public class LogInActivity extends AppCompatActivity {
             Toast.makeText(this, "아이디와 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
     }
 
-    protected void SignUp(){
-
+    protected void signUp(){
+        Intent intent = new Intent(this, SignUpActivity.class);
+        launcher.launch(intent);
     }
 }

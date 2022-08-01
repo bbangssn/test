@@ -1,15 +1,16 @@
 package com.example.test;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.test.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
+    final String TAG = "MainActivity";
 
     ActivityMainBinding binding;
     FirebaseAuth mAuth;
@@ -23,9 +24,14 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         //hide Action bar
-        getSupportActionBar().hide();
+        if(getSupportActionBar() != null)
+            getSupportActionBar().hide();
 
-        if(mAuth.getCurrentUser() == null)
+        binding.ButtonLogOut.setOnClickListener(v->{
+            Log.d(TAG, "LogOut");
+            mAuth.signOut();
             startActivity(new Intent(this, LogInActivity.class));
+            finish();
+        });
     }
 }

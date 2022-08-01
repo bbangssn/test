@@ -3,11 +3,13 @@ package com.example.test;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+@SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
     final String TAG = "Splash Activity";
 
@@ -16,8 +18,8 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        if(getSupportActionBar() != null)
+            getSupportActionBar().hide();
 
         Handler handler = new Handler();
         handler.postDelayed(() -> {

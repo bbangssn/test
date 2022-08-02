@@ -9,14 +9,13 @@ import android.widget.Toast;
 
 import com.example.test.databinding.ActivitySignUpBinding;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    final String TAG = "SignUpActivity";
+    private final String TAG = "SignUpActivity";
 
-    FirebaseAuth mAuth;//firebase Authentication helper
-    ActivitySignUpBinding binding;//view binding
+    private FirebaseAuth mAuth;//firebase Authentication helper
+    private ActivitySignUpBinding binding;//view binding
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +33,6 @@ public class SignUpActivity extends AppCompatActivity {
         binding.ButtonSignUp.setOnClickListener(v -> signUp());
     }
 
-    @Override
-    protected void onStart(){
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-    }
-
-    //TODO
     private void signUp() {
         String email = binding.EditTextEmail.getText().toString();
         String password = binding.EditTextPassword.getText().toString();

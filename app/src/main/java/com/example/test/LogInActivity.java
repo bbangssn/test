@@ -13,12 +13,12 @@ import com.example.test.databinding.ActivityLogInBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LogInActivity extends AppCompatActivity {
-    final String TAG = "LogInActivity";
+    private final String TAG = "LogInActivity";
 
-    FirebaseAuth mAuth;//firebase Authentication helper
-    ActivityLogInBinding binding;//view binding
+    private FirebaseAuth mAuth;//firebase Authentication helper
+    private ActivityLogInBinding binding;//view binding
 
-    ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+    private ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
         if(result.getResultCode() == RESULT_OK && result.getData() != null){
             binding.EditTextEmail.setText(result.getData().getStringExtra("email"));
             binding.EditTextPassword.setText(result.getData().getStringExtra("password"));

@@ -11,7 +11,7 @@ import android.util.Log;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
-    final String TAG = "Splash Activity";
+    private final String TAG = "Splash Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

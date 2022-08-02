@@ -10,10 +10,10 @@ import com.example.test.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-    final String TAG = "MainActivity";
+    private final String TAG = "MainActivity";
 
-    ActivityMainBinding binding;
-    FirebaseAuth mAuth;
+    private ActivityMainBinding binding;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

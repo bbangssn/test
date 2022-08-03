@@ -15,6 +15,10 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private FirebaseAuth mAuth;
 
+    private MapPageFragment mapPageFragment;
+    private MainPageFragment mainPageFragment;
+    private MyPageFragment myPageFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,11 +31,32 @@ public class MainActivity extends AppCompatActivity {
         if(getSupportActionBar() != null)
             getSupportActionBar().hide();
 
+        mapPageFragment = new MapPageFragment();
+        mainPageFragment = new MainPageFragment();
+        myPageFragment = new MyPageFragment();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, mainPageFragment).commit();
+
         binding.ButtonLogOut.setOnClickListener(v->{
             Log.d(TAG, "LogOut");
             mAuth.signOut();
             startActivity(new Intent(this, LogInActivity.class));
             finish();
+        });
+
+        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.map:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, mapPageFragment).commit();
+                    return true;
+                case R.id.main:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, mainPageFragment).commit();
+                    return true;
+                case R.id.mypage:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, myPageFragment).commit();
+                    return true;
+            }
+            return false;
         });
     }
 }

@@ -66,7 +66,7 @@ public class LogInActivity extends AppCompatActivity {
                         assert user != null;
                         db.collection("users").document(user.getUid()).get()
                                 .addOnSuccessListener(documentSnapshot -> {
-                                    if(documentSnapshot.exists()){
+                                    if(documentSnapshot.exists()){//TODO if문 내용을 문서 존재 여부 에서 각 항목 존재 여부로 구체화되어야하는가?
                                         Intent intent = new Intent(this, MainActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//존재하는 엑티비티가 있다면 그것을 사용하고 그 위에 쌓인 엑티비티 삭제
                                         startActivity(intent);

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/map"
+        android:enabled="true"
+        android:icon="@mipmap/nanaland_launcher_round"
+        android:title="map"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/main"
+        android:enabled="true"
+        android:icon="@mipmap/nanaland_launcher_round"
+        android:title="main"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/mypage"
+        android:enabled="true"
+        android:icon="@mipmap/nanaland_launcher_round"
+        android:title="my page"
+        app:showAsAction="always"/>
+</menu>

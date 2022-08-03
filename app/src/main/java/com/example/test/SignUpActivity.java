@@ -1,7 +1,9 @@
 package com.example.test;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private final String TAG = "SignUpActivity";
+    private static final String TAG = "SignUpActivity";
 
     private FirebaseAuth mAuth;//firebase Authentication helper
     private ActivitySignUpBinding binding;//view binding

@@ -10,7 +10,7 @@ import com.example.test.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-    private final String TAG = "MainActivity";
+    private static final String TAG = "MainActivity";
 
     private ActivityMainBinding binding;
     private FirebaseAuth mAuth;

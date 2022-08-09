@@ -10,13 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class RecommendItemAdapter extends RecyclerView.Adapter<RecommendItemAdapter.RecommendItemAdapterViewholder> {
 
-    public ArrayList<RecommendItemData> dataList;
+    public ArrayList<JSONObject> dataList;
 
-    public RecommendItemAdapter(ArrayList<RecommendItemData> dataList){
+    public RecommendItemAdapter(ArrayList<JSONObject> dataList){
         this.dataList = dataList;
     }
 

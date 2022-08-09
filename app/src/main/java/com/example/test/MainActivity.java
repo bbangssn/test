@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, LogInActivity.class));
             finish();
         });
+        binding.ButtonRecommend.setOnClickListener(v->{
+            Log.d(TAG, "-> Recommend Activity");
+            startActivity(new Intent(this, RecommendActivity.class));
+        });
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){

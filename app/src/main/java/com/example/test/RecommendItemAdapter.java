@@ -10,15 +10,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class RecommendItemAdapter extends RecyclerView.Adapter<RecommendItemAdapter.RecommendItemAdapterViewholder> {
 
-    public ArrayList<JSONObject> dataList;
+    public JSONArray dataList;
 
-    public RecommendItemAdapter(ArrayList<JSONObject> dataList){
+    public RecommendItemAdapter(JSONArray dataList){
         this.dataList = dataList;
     }
 
@@ -36,7 +37,7 @@ public class RecommendItemAdapter extends RecyclerView.Adapter<RecommendItemAdap
 
     @Override
     public int getItemCount() {
-        return (dataList != null? dataList.size() : 0 );
+        return (dataList != null? dataList.length() : 0 );
     }
 
     public static class RecommendItemAdapterViewholder extends RecyclerView.ViewHolder{
@@ -47,9 +48,9 @@ public class RecommendItemAdapter extends RecyclerView.Adapter<RecommendItemAdap
         public RecommendItemAdapterViewholder(@NonNull View itemView) {
             super(itemView);
 
-            TitleImage = (ImageView) itemView.findViewById(R.id.TitleImage);
-            Title = (TextView) itemView.findViewById(R.id.Title);
-            Content = (TextView) itemView.findViewById(R.id.Content);
+            TitleImage = itemView.findViewById(R.id.TitleImage);
+            Title = itemView.findViewById(R.id.Title);
+            Content = itemView.findViewById(R.id.Content);
         }
     }
 }

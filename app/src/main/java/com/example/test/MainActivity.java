@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.test.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,8 +45,15 @@ public class MainActivity extends AppCompatActivity {
             finish();
         });
         binding.ButtonRecommend.setOnClickListener(v->{
-            Log.d(TAG, "-> Recommend Activity");
-            startActivity(new Intent(this, RecommendActivity.class));
+            String keyword = binding.EditTextKeywordTest.getText().toString();
+            if(keyword.length() > 0){
+                Log.d(TAG, "-> Recommend Activity");
+                Intent intent = new Intent(this, RecommendActivity.class);
+                intent.putExtra("keyword", keyword);
+                startActivity(intent);
+            }else{
+                Toast.makeText(this, "테스트용 키워드를 입력해주세요!", Toast.LENGTH_SHORT).show();
+            }
         });
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {

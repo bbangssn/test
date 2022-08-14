@@ -29,7 +29,7 @@ public class GetFromApi {
                     "&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8") + //현재 페이지 번호
                     "&" + URLEncoder.encode("MobileOS", "UTF-8") + "=" + URLEncoder.encode("AND", "UTF-8") + //현재 OS
                     "&" + URLEncoder.encode("MobileApp", "UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8") + //서비스명
-                    "&" + URLEncoder.encode("keyword", "UTF-8") + "=" + URLEncoder.encode( keyword, "UTF-8") + //
+                    "&" + URLEncoder.encode("keyword", "UTF-8") + "=" + URLEncoder.encode( keyword, "UTF-8") +
                     "&" + URLEncoder.encode("_type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8");
             java.net.URL url = new URL(urlBuilder);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();

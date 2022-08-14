@@ -38,23 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, mainPageFragment).commit();
 
-        binding.ButtonLogOut.setOnClickListener(v->{
-            Log.d(TAG, "LogOut");
-            mAuth.signOut();
-            startActivity(new Intent(this, LogInActivity.class));
-            finish();
-        });
-        binding.ButtonRecommend.setOnClickListener(v->{
-            String keyword = binding.EditTextKeywordTest.getText().toString();
-            if(keyword.length() > 0){
-                Log.d(TAG, "-> Recommend Activity");
-                Intent intent = new Intent(this, RecommendActivity.class);
-                intent.putExtra("keyword", keyword);
-                startActivity(intent);
-            }else{
-                Toast.makeText(this, "테스트용 키워드를 입력해주세요!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        binding.bottomNavigationView.setSelectedItemId(R.id.main);
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){

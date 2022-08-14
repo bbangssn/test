@@ -45,7 +45,4 @@ public class RecommendActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this)); // Linear Layout 형태로 item 관리
         recyclerView.setAdapter(adapter);
     }
-
-
-
 }

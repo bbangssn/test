@@ -5,6 +5,11 @@
     <!-- INTERNET PERMISSION -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <!--TODO kakao HASH값 입력해주세요!-->
+    <!--meta-data android:name="com.kakao.sdk.AppKey" android:value="XXXXXXXXXXXXXX"/-->
 
     <application
         android:allowBackup="true"

@@ -49,4 +49,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-auth'
+
+    //for kakao map
+    implementation files('libs/libDaumMapAndroid.jar')
 }

@@ -8,8 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
-    <!--TODO kakao HASH값 입력해주세요!-->
-    <!--meta-data android:name="com.kakao.sdk.AppKey" android:value="XXXXXXXXXXXXXX"/-->
+    <meta-data android:name="com.kakao.sdk.AppKey" android:value="db28496c1e2503310ac040a8fc0cdad5"/>
 
     <application
         android:allowBackup="true"

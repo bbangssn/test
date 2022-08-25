@@ -1,6 +1,5 @@
 package com.example.test;
 
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
+import org.json.JSONException;
 
 public class RecommendItemAdapter extends RecyclerView.Adapter<RecommendItemAdapter.RecommendItemAdapterViewholder> {
+
+    private final static String TAG = "RecommendItemAdapter";
 
     public JSONArray dataList;
 
@@ -33,6 +32,12 @@ public class RecommendItemAdapter extends RecyclerView.Adapter<RecommendItemAdap
     @Override
     public void onBindViewHolder(@NonNull RecommendItemAdapterViewholder holder, int position) {
         //TODO dataList의 position번째 데이터를 RecommendItemAdapterViewholder에 대입해 아이템 구성
+            try {
+                String title = dataList.getJSONObject(position).getString("title");
+                holder.Title.setText(title);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
     }
 
     @Override
